@@ -1,5 +1,9 @@
 # SnackSpy 🕵️‍♀️
 
+## **Project URL
+
+https://fastidious-mandazi-9abd5a.netlify.app/
+
 ---
 
 ### **Basic Details**
@@ -58,7 +62,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-##### **Screenshots:**
+### **Screenshots:**
 <img width="1919" height="904" alt="Screenshot 2025-08-15 075505" src="https://github.com/user-attachments/assets/35d20e8a-616c-419c-a946-482944d845a1" />
 
 <img width="1919" height="910" alt="Screenshot 2025-08-15 072707" src="https://github.com/user-attachments/assets/2824455e-921b-4849-ac59-d324ff89a2c7" />
