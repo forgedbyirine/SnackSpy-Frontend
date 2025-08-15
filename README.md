@@ -81,7 +81,7 @@ uvicorn main:app --reload
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+[https://drive.google.com/drive/folders/1LCMxTMgw7WEQGQyJ8nuWWDD6d47SnHR1?usp=sharing]
 *This video demonstrates the working of our web app*
 
 ## Team Contributions
