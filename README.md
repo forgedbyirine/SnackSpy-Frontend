@@ -60,6 +60,7 @@ uvicorn main:app --reload
 
 ##### **Screenshots:**
 
+Screenshot 2025-08-15 075505.png
 
 
 
