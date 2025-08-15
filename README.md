@@ -80,15 +80,19 @@ uvicorn main:app --reload
 
 ### **Screenshots:**
 <img width="1919" height="904" alt="Screenshot 2025-08-15 075505" src="https://github.com/user-attachments/assets/35d20e8a-616c-419c-a946-482944d845a1" />
+
 Finally its time to check!!
 
 <img width="1919" height="910" alt="Screenshot 2025-08-15 072707" src="https://github.com/user-attachments/assets/2824455e-921b-4849-ac59-d324ff89a2c7" />
+
 Uploading photos (before & after)
 
-<img width="1899" height="909" alt="Screenshot 2025-08-15 072734" src="https://github.com/user-attachments/assets/8760af4a-58a1-436a-8dca-d0aac2fd76ab" />\
+<img width="1899" height="909" alt="Screenshot 2025-08-15 072734" src="https://github.com/user-attachments/assets/8760af4a-58a1-436a-8dca-d0aac2fd76ab" />
+
 OH I see someone stole my chips
 
 <img width="1897" height="908" alt="Screenshot 2025-08-15 073144" src="https://github.com/user-attachments/assets/202b073e-311d-4458-98c5-3d171c3e8783" />
+
 Can'nt believe its Safe 
 
 ---
