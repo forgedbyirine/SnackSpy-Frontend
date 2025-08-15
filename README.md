@@ -1,10 +1,15 @@
 # SnackSpy 🕵️‍♀️
 
+---
+
 ## Project URL
 
 https://fastidious-mandazi-9abd5a.netlify.app/
 
 ---
+
+### SnackSpy Backend
+
 
 ### **Basic Details**
 
