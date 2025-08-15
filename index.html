@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnackSpy 🕵️‍♀️ | Forensic Snack Analysis</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Apply custom fonts */
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #D55D3F; /* Main background color */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
+
+        /* Custom styles for the file input */
+        .file-drop-zone {
+            transition: all 0.2s ease-in-out;
+        }
+        .file-drop-zone.dragover {
+            transform: scale(1.02);
+            border-color: #f97316; /* Orange-500 */
+        }
+        
+        /* Loader style */
+        .loader {
+            border: 6px solid #92400e; /* Amber-800 */
+            border-top: 6px solid #fb923c; /* Orange-400 */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Falling Snack Animation --- */
+        #snack-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind all other content */
+            pointer-events: none; /* Make it non-interactive */
+        }
+
+        .snack {
+            position: absolute;
+            background-color: #FBBF24; /* Amber-400 */
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-orange-100">
+
+    <div id="snack-container"></div>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl relative z-10">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-bold text-white tracking-wider" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+                <span class="text-yellow-300">Snack</span>Spy
+            </h1>
+            <p class="text-lg text-orange-200 mt-2">Because Trust Issues Start With Snacks!</p>
+        </header>
+
+        <div class="bg-red-900/40 backdrop-blur-sm p-6 rounded-2xl shadow-2xl ring-1 ring-orange-400/50 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-center text-orange-100">How it started! (Before)</h3>
+                    <label for="baseline-input" class="file-drop-zone flex flex-col items-center justify-center w-full h-64 border-2 border-orange-400 border-dashed rounded-lg cursor-pointer bg-red-900/50 hover:bg-red-900/70">
+                        <div id="baseline-prompt" class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-10 h-10 mb-4 text-orange-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/></svg>
+                            <p class="mb-2 text-sm text-orange-300"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        </div>
+                        <input id="baseline-input" type="file" class="hidden" accept="image/*" />
+                        <img id="baseline-preview" class="hidden w-full h-full object-cover rounded-lg" alt="Baseline Preview"/>
+                    </label>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-center text-orange-100">How it's going (After)</h3>
+                    <label for="test-input" class="file-drop-zone flex flex-col items-center justify-center w-full h-64 border-2 border-orange-400 border-dashed rounded-lg cursor-pointer bg-red-900/50 hover:bg-red-900/70">
+                         <div id="test-prompt" class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-10 h-10 mb-4 text-orange-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/></svg>
+                            <p class="mb-2 text-sm text-orange-300"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        </div>
+                        <input id="test-input" type="file" class="hidden" accept="image/*" />
+                        <img id="test-preview" class="hidden w-full h-full object-cover rounded-lg" alt="Test Preview"/>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button id="analyze-btn" class="bg-orange-600 text-white font-bold text-lg py-3 px-12 rounded-full hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 disabled:bg-slate-600 disabled:cursor-not-allowed">
+                    ANALYZE
+                </button>
+            </div>
+        </div>
+        
+        <div id="results-section" class="bg-red-900/40 backdrop-blur-sm p-6 rounded-2xl shadow-2xl ring-1 ring-orange-400/50 hidden">
+            <div id="loader" class="mx-auto loader hidden"></div>
+            <div id="results-content" class="text-center hidden">
+                <h2 class="text-3xl font-bold text-white mb-4">Analysis Complete</h2>
+                <div id="status" class="text-5xl font-extrabold mb-2 uppercase tracking-widest"></div>
+                <p id="message" class="text-lg italic text-orange-200 mb-8"></p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-yellow-300">Before</h3>
+                        <img id="result-baseline" class="rounded-lg shadow-lg w-full" alt="Baseline Image">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-orange-200">After</h3>
+                        <img id="result-test" class="rounded-lg shadow-lg w-full" alt="Test Image">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-green-300">Findings</h3>
+                        <img id="result-diff" class="rounded-lg shadow-lg w-full" alt="Difference Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Create Falling Snacks ---
+        const snackContainer = document.getElementById('snack-container');
+        const snackCount = 30;
+        for (let i = 0; i < snackCount; i++) {
+            const snack = document.createElement('div');
+            snack.classList.add('snack');
+            
+            const size = Math.random() * 20 + 10; // 10px to 30px
+            snack.style.width = `${size}px`;
+            snack.style.height = `${size * 0.6}px`; // Make them oblong
+            snack.style.left = `${Math.random() * 100}vw`;
+            snack.style.animationDuration = `${Math.random() * 5 + 8}s`; // 8s to 13s
+            snack.style.animationDelay = `${Math.random() * 5}s`;
+            
+            snackContainer.appendChild(snack);
+        }
+
+        // --- Get all our HTML elements ---
+        const baselineInput = document.getElementById('baseline-input');
+        const testInput = document.getElementById('test-input');
+        const baselinePreview = document.getElementById('baseline-preview');
+        const testPreview = document.getElementById('test-preview');
+        const baselinePrompt = document.getElementById('baseline-prompt');
+        const testPrompt = document.getElementById('test-prompt');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const resultsSection = document.getElementById('results-section');
+        const resultsContent = document.getElementById('results-content');
+        const loader = document.getElementById('loader');
+        
+        let baselineB64 = '';
+        let testB64 = '';
+
+        // --- Helper function to convert a file to a Base64 string ---
+        const fileToBase64 = (file) => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        // --- Logic for handling image uploads and previews ---
+        const handleFileUpload = async (file, previewEl, promptEl) => {
+            if (file) {
+                previewEl.src = URL.createObjectURL(file);
+                previewEl.classList.remove('hidden');
+                promptEl.classList.add('hidden');
+                return await fileToBase64(file);
+            }
+            return '';
+        };
+
+        baselineInput.addEventListener('change', async (e) => {
+            baselineB64 = await handleFileUpload(e.target.files[0], baselinePreview, baselinePrompt);
+        });
+
+        testInput.addEventListener('change', async (e) => {
+            testB64 = await handleFileUpload(e.target.files[0], testPreview, testPrompt);
+        });
+        
+        // --- Drag and Drop functionality ---
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            document.body.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        const setupDropZone = (dropZone, input, previewEl, promptEl, callback) => {
+            dropZone.addEventListener('dragover', () => dropZone.classList.add('dragover'));
+            dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+            dropZone.addEventListener('drop', async (e) => {
+                dropZone.classList.remove('dragover');
+                const file = e.dataTransfer.files[0];
+                if (file) {
+                    input.files = e.dataTransfer.files;
+                    const b64 = await handleFileUpload(file, previewEl, promptEl);
+                    callback(b64);
+                }
+            });
+        };
+
+        setupDropZone(baselinePreview.parentElement, baselineInput, baselinePreview, baselinePrompt, b64 => baselineB64 = b64);
+        setupDropZone(testPreview.parentElement, testInput, testPreview, testPrompt, b64 => testB64 = b64);
+
+        // --- Main logic when "ANALYZE" is clicked ---
+        analyzeBtn.addEventListener('click', async () => {
+            if (!baselineB64 || !testB64) {
+                alert('Please upload both a baseline and a test image.');
+                return;
+            }
+
+            resultsSection.classList.remove('hidden');
+            loader.classList.remove('hidden');
+            resultsContent.classList.add('hidden');
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+            const formData = new FormData();
+            formData.append('baseline_image_b64', baselineB64);
+            formData.append('test_image_b64', testB64);
+
+            try {
+                const response = await fetch('https://snackspy-backend.onrender.com/analyze/', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                
+                const statusEl = document.getElementById('status');
+                document.getElementById('message').textContent = `${data.message} (SSIM: ${data.ssim_score})`;
+                statusEl.className = 'text-5xl font-extrabold mb-2 uppercase tracking-widest'; // Reset class
+                
+                // It checks for "BREACH" from the server and displays "THEFT"
+                if (data.status === 'BREACH') {
+                    statusEl.textContent = 'THEFT';
+                    statusEl.classList.add('text-red-400');
+                } else {
+                    statusEl.textContent = data.status;
+                    statusEl.classList.add('text-green-400');
+                }
+
+                document.getElementById('result-baseline').src = baselineB64;
+                document.getElementById('result-test').src = testB64;
+                document.getElementById('result-diff').src = data.diff_image_b64;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('message').textContent = 'An error occurred. Is the backend server running?';
+            } finally {
+                loader.classList.add('hidden');
+                resultsContent.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
