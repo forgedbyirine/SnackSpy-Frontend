@@ -10,6 +10,9 @@ https://fastidious-mandazi-9abd5a.netlify.app/
 
 ### SnackSpy Backend
 
+https://github.com/forgedbyirine/SnackSpy-Backend.git
+
+---
 
 ### **Basic Details**
 
