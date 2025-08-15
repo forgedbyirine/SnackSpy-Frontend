@@ -67,8 +67,24 @@ uvicorn main:app --reload
 
 <img width="1897" height="908" alt="Screenshot 2025-08-15 073144" src="https://github.com/user-attachments/assets/202b073e-311d-4458-98c5-3d171c3e8783" />
 
+### Project Demo
+# Video
+[Add your demo video link here]
+*This video demonstrates the working of our web app*
 
+## Team Contributions
+Irine Paul & Aswathy Gopinath: Jointly architected and developed the full-stack application. Both members contributed equally to:
 
+Backend Development: Designing the FastAPI server, implementing the OpenCV and scikit-image computer vision logic, and managing the API endpoint.
+
+Frontend Development: Crafting the user interface with HTML/Tailwind CSS and developing the client-side JavaScript for image handling and API communication.
+
+Deployment & DevOps: Configuring and deploying the backend to Render and the frontend to Netlify, ensuring seamless integration.
+
+Project Documentation: Creating the README file, workflow diagrams, and project descriptions.
+
+---
+Made with ❤️ at TinkerHub Useless Projects 
 
 
 
