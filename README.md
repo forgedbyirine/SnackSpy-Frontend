@@ -43,12 +43,12 @@ SnackSpy is the answer. By leveraging state-of-the-art computer vision and a hig
 
 ---
 
-### **How this Work**
+### **How this Work :)**
 
-Place your snack in a plate and take a picture of it (before pic) then after coming back doing your other works check if your snack which is kept in the plate by taking a photo again (after pic). We prefer both the picture angle have to same for proper analysis. Then upload both the picture in our web app in the allotted place
+Place your snack in a plate and take a picture of it (before pic) then after coming back doing your other works check if your snack which is kept in the plate by taking a photo again (after pic). We prefer both the picture angle to be same for proper analysis. Then upload both the picture in our web app in the allotted place
 and find out the results.
 
-We hope you're snack'd be safe and sound!!
+We hope your snack is safe and sound!!
 
 ---
 
