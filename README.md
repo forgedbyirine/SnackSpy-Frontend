@@ -102,7 +102,7 @@ Can'nt believe its Safe
 
 ---
 
-### **Samples to used to test:**
+### **Samples used to test:**
 ![kurkure1](https://github.com/user-attachments/assets/3be0acb2-3060-4bbc-be88-7b358d175312)
 
 Photo of before 
